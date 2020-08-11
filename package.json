@@ -1,0 +1,15 @@
+{
+  "name": "covid_scrapper",
+  "version": "0.0.1",
+  "description": "A NodeJS scrapper for MOHFW, India's Covid site",
+  "main": "index.js",
+  "author": "Amlanjyoti Saikia",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
