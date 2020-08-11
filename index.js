@@ -3,7 +3,6 @@ const logger = require("./src/logger");
 const getHandler = require("./src/handler");
 const parser = require("./src/parser");
 
-
 const app = express();
 const port = process.env.PORT || 443;
 
@@ -29,4 +28,7 @@ app.get('/history', getHandler(CONFIG.HISTORY));
 
 app.listen(port, () => {
   logger.log(`Covid Scrapper running at port: ${port}`)
+  if (process.env.CACHE_TTL) {
+    logger.log(`Cache time to live (in miliseconds): ${process.env.CACHE_TTL}`)
+  }
 });

@@ -14,6 +14,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "start:dev": "export DEV=true && nodemon --exec node index.js --watch index.js"
+    "start:dev": "export DEV=true && nodemon --exec node index.js --watch src"
   }
 }

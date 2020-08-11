@@ -5,10 +5,13 @@ const cache = require("./cache");
 
 cache.create();
 
+const DEFAULT_CACHE_TTL = 60 * 60 * 1000;
+
 const getHandler = config => (req, res) => {
-  const cacheObj = cache.get(null, config.CACHE);
-  if (!cacheObj.stale) {
-    return cacheObj.data;
+  const cacheObj = cache.get(parseInt(process.env.CACHE_TTL) || DEFAULT_CACHE_TTL, config.CACHE);
+  if (!cacheObj.isStale) {
+    res.send(cacheObj.data);
+    return;
   }
 
   axios
