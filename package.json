@@ -13,6 +13,7 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "nodemon index.js -exec node index.js"
+    "start": "node index.js",
+    "start:dev": "export DEV=true && nodemon --exec node index.js --watch index.js"
   }
 }
