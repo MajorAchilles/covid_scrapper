@@ -3,7 +3,7 @@ const localeStringToInt = value => {
 };
 
 const parseCasesTable = table => {
-  const items = table.split("\n\n\n")
+  const items = table.textContent.split("\n\n\n")
     .map(row => row.split("\n").filter(item => !!item))
     .filter(row => row.length >= 5)
     .filter((_, index) => index > 1);

@@ -19,7 +19,7 @@ const warn = text => {
 }
 
 const error = text => {
-  console.e(text);
+  console.error(text);
 }
 
 const logger = {

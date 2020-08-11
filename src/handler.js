@@ -1,7 +1,6 @@
 const { JSDOM } = require("jsdom");
 const axios = require("axios");
 const logger = require("./logger");
-const parser = require("./parser");
 const cache = require("./cache");
 
 cache.create();
@@ -17,7 +16,7 @@ const getHandler = config => (req, res) => {
     .then(html => {
       const dom = new JSDOM(html.data);
       const data = {
-        ...parser.cases(dom.window.document.querySelector(config.SELECTOR).textContent),
+        ...config.PARSER(dom.window.document.querySelector(config.SELECTOR)),
         source: {
           url: config.URL,
           label: config.SOURCE
