@@ -23,7 +23,6 @@ const CONFIG = {
 app.get('/cases', getHandler(CONFIG.CASES));
 app.get('/history', getHandler(CONFIG.HISTORY));
 
-
 app.listen(port, () => {
   logger.log(`Covid Scrapper running at port: ${port}`)
 });

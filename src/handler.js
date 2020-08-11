@@ -4,6 +4,8 @@ const logger = require("./logger");
 const parser = require("./parser");
 const cache = require("./cache");
 
+cache.create();
+
 const getHandler = config => (req, res) => {
   const cacheObj = cache.get(null, config.CACHE);
   if (!cacheObj.stale) {
