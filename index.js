@@ -1,10 +1,13 @@
 const express = require('express');
 const logger = require("./src/logger");
 const getHandler = require("./src/handler");
+const dotenv = require("dotenv");
 const parser = require("./src/parser");
+const config = require("./src/config");
+
+dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 443;
 
 const CONFIG = {
   CASES: {
@@ -26,9 +29,9 @@ const CONFIG = {
 app.get('/cases', getHandler(CONFIG.CASES));
 app.get('/history', getHandler(CONFIG.HISTORY));
 
-app.listen(port, () => {
-  logger.log(`Covid Scrapper running at port: ${port}`)
-  if (process.env.CACHE_TTL) {
-    logger.log(`Cache time to live (in miliseconds): ${process.env.CACHE_TTL}`)
+app.listen(config.PORT, () => {
+  logger.warn(`Covid Scrapper running at port: ${config.PORT}`)
+  if (config.CACHE_TTL) {
+    logger.warn(`Cache time to live (in miliseconds): ${config.CACHE_TTL}`)
   }
 });

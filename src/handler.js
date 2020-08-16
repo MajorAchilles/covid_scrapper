@@ -2,13 +2,12 @@ const { JSDOM } = require("jsdom");
 const axios = require("axios");
 const logger = require("./logger");
 const cache = require("./cache");
+const config = require("./config");
 
 cache.create();
 
-const DEFAULT_CACHE_TTL = 60 * 60 * 1000;
-
-const getHandler = config => (req, res) => {
-  const cacheObj = cache.get(parseInt(process.env.CACHE_TTL) || DEFAULT_CACHE_TTL, config.CACHE);
+const getHandler = config => (_req, res) => {
+  const cacheObj = cache.get(config.CACHE_TTL, config.CACHE);
   if (!cacheObj.isStale) {
     res.send(cacheObj.data);
     return;
