@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const config = {
   PORT: process.env.PORT ? parseInt(process.env.PORT) : 443,
   PORT_UNSECURED: process.env.PORT_UNSECURED ? parseInt(process.env.PORT_UNSECURED) : 80,

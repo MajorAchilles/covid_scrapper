@@ -1,11 +1,8 @@
 const express = require('express');
 const logger = require("./src/logger");
 const getHandler = require("./src/handler");
-const dotenv = require("dotenv");
 const parser = require("./src/parser");
 const config = require("./src/config");
-
-dotenv.config();
 
 const app = express();
 
